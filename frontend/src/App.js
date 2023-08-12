@@ -123,7 +123,7 @@ function App() {
                 </div>
               </div>
             ))
-              }
+                }
         </div>
 
             <div className="input h-1/6 w-full text-center flex items-center justify-center flex-col">
