@@ -1,4 +1,4 @@
-const array = []
+// const array = []
 
 async function postData(url = "", data = {}) { 
     const response = await fetch(url, {
@@ -12,29 +12,34 @@ async function postData(url = "", data = {}) {
 sendButton.addEventListener("click", async ()=>{ 
     console.log("hey you clicked")
     questionInput = document.getElementById("questionInput").value
+    document.getElementById("questionInputAgain").value = ""
     document.getElementById("questionInput").value = ""
     document.querySelector(".right2").style.display = "block"
     document.querySelector(".right1").style.display = "none"
     question.innerHTML = questionInput
     let result = await postData("/api", {"question": questionInput})
     solution.innerHTML = result.result
-    array.push({"Question": questionInput, "Answer":result.result})
-})
+    // array.push({"Question": questionInput, "Answer":result.result})
+})    
+// questionInput = document.getElementById("questionInputAgain").value
+
 
 askAgain.addEventListener("click", async () => {
-    console.log("hey you clicked")
-    questionInput = document.getElementById("questionInput").value
-    document.getElementById("questionInput").value = ""
+    console.log("hey you clicked on askAgain")
+    // question.innerHTML = "Loading...."
+    solution.innerHTML = "Loading...."
+    questionInput = document.getElementById("questionInputAgain").value
+    document.getElementById("questionInputAgain").value = ""
     document.querySelector(".right2").style.display = "block"
     document.querySelector(".right1").style.display = "none"
     question.innerHTML = questionInput
     let result = await postData("/api", {"question": questionInput})
     solution.innerHTML = result.result
-    array.push({"Question": questionInput, "Answer":result.result})
+    // array.push({"Question": questionInput, "Answer":result.result})
 })
 
-document.getElementById('right2').innerHTML = array.map(mp => (
-    question.innerHTML = mp.Question,
-    solution.innerHTML = mp.Answer
-)
-).join('')
+// document.getElementById('right2').innerHTML = array.map(mp => (
+//     question.innerHTML = mp.Question,
+//     solution.innerHTML = mp.Answer
+// )
+// ).join('')
