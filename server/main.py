@@ -36,4 +36,12 @@ def api():
     data = {"result": "Thank you! I'm just a machine learning model designed to respond to questions and generate text based on my training data. Is there anything specific you'd like to ask or discuss? "}
     return jsonify(data)
 
+@app.route("/createaccount", methods=["GET", "POST"])
+def createaccount():
+    if request.method == "POST":
+        task = request.json.get("")
+        return task
+    dat = ""
+    return dat
+
 app.run(debug = True, port = 5000)
