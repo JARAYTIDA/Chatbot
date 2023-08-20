@@ -14,7 +14,6 @@ def creat_account(realmID):
     response = requests.post(api_url, json=json_object)
     return response.json()
 
-
 def query_account(realmID, selectStatement):
     api_url = f"{QUICKBOOKS_ONLINE_BASE_URL}/v3/company/{realmID}/query?query={selectStatement}"
     response = requests.get(api_url)
