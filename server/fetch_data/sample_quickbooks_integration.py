@@ -1,21 +1,13 @@
 from qbClient import AuthClient
 import constant as cfg
 import requests
-from future.moves.urllib.parse import urlencode
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-QUICKBOOKS_ONLINE_SANDBOX_BASE_URL = os.getenv("QUICKBOOKS_ONLINE_SANDBOX_BASE_URL")
-QUICKBOOKS_PAYMENT_SANDBOX_BASE_URL = os.getenv("QUICKBOOKS_PAYMENT_SANDBOX_BASE_URL")
 
 auth_client = AuthClient(**cfg.client_secrets)
 
 def getCustomerData(accessToken):
     #making Request
-    base_url = QUICKBOOKS_ONLINE_SANDBOX_BASE_URL
-    url = '{0}/v3/company/{1}/companyinfo/{1}'.format(base_url, cfg.qBData["realm_id"])
+    base_url = 'https://sandbox-quickbooks.api.intuit.com'
+    url = 'https://sandbox-quickbooks.api.intuit.com//v3/company/4620816365324188540/companyinfo/4620816365324188540?minorversion=65'
     auth_header = 'Bearer {0}'.format(accessToken)
     headers = {
         'Authorization': auth_header,
@@ -34,7 +26,7 @@ def refresh_token():
 
 def getPaymentData(accessToken):
     #making Request
-    base_url = f'{QUICKBOOKS_PAYMENT_SANDBOX_BASE_URL}/quickbooks/v4/payments/charges/'
+    base_url = f'https://sandbox.api.intuit.com/quickbooks/v4/payments/charges/'
     auth_header = 'Bearer {0}'.format(accessToken)
     data = {
         'Authorization': auth_header
@@ -52,9 +44,7 @@ def getPaymentData(accessToken):
 
     print("Success")
 
-
 if __name__ == "__main__":
-    # fetchData()
     response = refresh_token()
     getCustomerData(accessToken = response["access_token"])
     response2 = auth_client.get_user_info(access_token=response["access_token"])

@@ -6,7 +6,6 @@ load_dotenv()
 
 QUICKBOOKS_ONLINE_BASE_URL = os.getenv("QUICKBOOKS_ONLINE_BASE_URL")
 QUICKBOOKS_PAYMENT_PRODUCTION_BASE_URL = os.getenv("QUICKBOOKS_PAYMENT_PRODUCTION_BASE_URL")
-
 ## will get from answer from chatbot model
 def creat_account(realmID):  
     api_url = f"{QUICKBOOKS_ONLINE_BASE_URL}/v3/company/{realmID}/account"  

@@ -51,7 +51,7 @@ template = ChatPromptTemplate.from_messages(
 # template
 
 llm = ChatOpenAI(openai_api_key=OPENAI_KEY)
-res = llm(template.format_messages(text='send email from Aditya Raj to Atishay Jain whose email is atishayjain0314@gmail.com'))
+res = llm(template.format_messages(text='send email from Aditya Raj to Atishay Jain whose email is atishayjain0314@gmail.com about a compnay named atishay that is masturbation and its good health effcts'))
 
 result = json.loads(res.content)
 
